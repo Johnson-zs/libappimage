@@ -98,7 +98,7 @@ if (NOT LIBAPPIMAGE_SHARED_ONLY)
 
     # we need Boost.Algorithm, which does not need to be included explicitly since it's header-only
     # link to Boost::boost to include the header directories
-    find_package(Boost 1.53.0 REQUIRED)
+    find_package(Boost 1.53.0 CONFIG REQUIRED)
 
     ## XdgUtils
     if(USE_SYSTEM_XDGUTILS)
