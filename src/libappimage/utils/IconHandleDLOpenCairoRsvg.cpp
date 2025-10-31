@@ -8,8 +8,11 @@ namespace appimage {
             std::move(data.begin(), data.end(), originalData.begin());
 
             // guess the image format by trying to load it
-            if (!tryLoadPng(originalData) && !tryLoadSvg(originalData)) {
-                throw IconHandleError("Unable to load image.");
+            if (!tryLoadPng(originalData)) {
+                throw IconHandleError("Unable to load PNG image");
+            }
+            if (!tryLoadSvg(originalData)) {
+                throw IconHandleError("Unable to load SVG image");
             }
 
             iconSize = iconOriginalSize = getOriginalSize();
@@ -19,8 +22,12 @@ namespace appimage {
             readFile(path);
 
             // guess the image format by trying to load it
-            if (!tryLoadPng(originalData) && !tryLoadSvg(originalData))
-                throw IconHandleError("Unable to load image.");
+            if (!tryLoadPng(originalData)) {
+                throw IconHandleError("Unable to load PNG image");
+            }
+            if (!tryLoadSvg(originalData)) {
+                throw IconHandleError("Unable to load SVG image");
+            }
 
             iconSize = iconOriginalSize = getOriginalSize();
         }
